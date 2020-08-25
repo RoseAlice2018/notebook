@@ -31,5 +31,23 @@ $git commit -m "write a readme"
 2. ```
    $git clone git@github.com:username/repositoryname.git
    ```
+### 版本回退
+1.git log (命令显示最近到最远的提交日志)
+	--pretty=oneline(缩减信息,如果输出信息太多)
+2.基础知识
+	2.1HEAD表示当前版本
+	2.2 HEAD^上一个版本
+	2.3 HEAD^^上上一个版本
+	2.4 HEAD~100 往前第100版本
+3.回退到上一个版本.
+
+```
+$git reset --hard HEAD^
+$git reset --hard commit_id
+```
+4. ```
+   git reflog
+   查看自己的每一次命令记录
+   ```
 
    
