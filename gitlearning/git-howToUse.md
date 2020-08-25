@@ -50,4 +50,44 @@ $git reset --hard commit_id
    查看自己的每一次命令记录
    ```
 
-   
+5 git status
+ 	查看当前状态
+6. git diff HEAD -- readme.txt
+	查看当前工作区和版本库的最新版本的区别
+### 撤销修改
+1.
+
+```
+$ git checkout -- filename
+```
+两种情况：
+第一种是file自修改后还没有add到暂存区，此时把文件在工作区的修改工作全部撤销。
+第二种是file已经修改添加到暂存区，撤销回退到添加暂存区后的状态。
+总之，就是让这个文件回到最近一次git commit 或 git add的状态。
+2.
+
+```
+ $git reset HEAD file
+```
+将暂存区的修改撤销掉，重新放回工作区。
+
+### 删除文件
+本地：
+
+```
+$rm filename
+```
+
+git：
+
+```
+$git rm filename
+%git commit -m ""
+```
+
+误删：（在本地错误删除某些文件，而此文件仍然在版本库里有）
+
+```
+$git checkout -- filename 
+```
+
