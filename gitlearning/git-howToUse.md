@@ -91,3 +91,60 @@ $git rm filename
 $git checkout -- filename 
 ```
 
+### 创建和合并分支
+1. 创建并切换分支
+	
+2. ```
+    $git checkout -b dev
+    Switched to a new branch 'dev'
+    git checkout命令加上-b参数表示创建并切换，相当于以下两条命令：
+    ```
+  ```
+
+  ```
+
+  相当于以下命令
+
+  ```
+  $git branch dev
+  $git checkout dev
+  Swicthed to branch 'dev'
+  ```
+
+  
+
+  ```
+$git branch
+查看当前分支
+git branch 命令会列出所有分支，当前分支前面会有一个*号
+  ```
+
+```
+将dev分支合并到当前分支（$git checkout master 回到主分支）
+$git merge dev
+```
+
+```
+$git branch -d dev
+deleted branch dev
+```
+
+#### Switch
+
+```
+$ git switch -c dev
+创建并切换到新的dev分支
+$ git switch master
+```
+
+#### summary
+
+```
+查看分支：git branch
+创建分支：git branch name
+切换分支：git checkout name / git switch name
+创建加切换分支：git checkout -b name / git switch -c name
+合并某分支到当前分支： git merge name
+删除分支： git branch -d name
+```
+
