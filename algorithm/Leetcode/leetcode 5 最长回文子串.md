@@ -61,4 +61,45 @@
     };
     ```
 
-    
+- 思路一.2：中心扩展算法
+
+  - 仔细观察方法一中的状态转移方程：找出其中的状态转移链：p(i,j)<-p(i+1,j-1)<-p(i+2,j-2)<----某一边界情况，可以发现，所有的状态在转移的时候的可能性都是唯一的。
+
+  - 我们通过每一个边界情况，进行扩展，直到无法扩展为止。此时回文串的长度就为此回文中心下的最长回文串长度。
+
+  - ```
+    class Solution {
+    public:
+    	pair<int,int> expandAroundCenter(const string& s,int left,int right)
+    	{
+    		while(left>=0&&right<s.size()&&s[left]==s[right])
+    		{
+    			--left;
+    			++right;
+    		}
+    		return {left+1,right-1};
+    	}
+        string longestPalindrome(string s) {
+           int start=0,end=0;
+           for(int i=0;i<s.size();i++)
+           {
+           		auto [left1,right1]=expandAroundCenter(s,i,i);
+           		auto [left2,right2]=expandAroundCenter(s,i,i+1);
+           		if(right1-left1>end-start)
+           		{
+           			start=left1;
+           			end=right1;
+           		}
+           		if(right2-left2>end-start)
+           		{
+           			start=left2;
+           			end=right2;
+           		}
+           }
+           return s.substr(start,end-start+1);
+        }
+    };
+    ```
+
+- Manacher 算法
+
