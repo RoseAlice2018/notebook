@@ -19,6 +19,20 @@
 
 - 思路一：暴力解法
 
-- 用left作为指针指向nums1，right作为指针指向nums2，如果nums1【left】<nums2[right],left++;如果nums1[left]>=nums2[right],将right插入nums1[left]前，left后数据依次向后顺次移动.
+- 合并和排序
 
-- 
+- ```
+  class Solution {
+  public:
+      void merge(vector<int>& nums1, int m, vector<int>& nums2, int n)
+       {
+          for(int i=0;i<n;i++)
+          {
+              nums1[m+i]=nums2[i];
+          }
+          sort(nums1.begin(),nums1.end());
+      }
+  };
+  ```
+
+  
