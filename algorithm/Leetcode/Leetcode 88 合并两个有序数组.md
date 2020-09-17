@@ -35,4 +35,42 @@
   };
   ```
 
-  
+- 思路二：双指针
+
+- 一般而言，对于两个有序数组的排序而言，都可以考虑双指针技巧
+
+- 利用了o（m）的额外空间
+
+- ```
+  class Solution {
+  public:
+      void merge(vector<int>& nums1, int m, vector<int>& nums2, int n)
+       {
+           vector<int> numscopy(nums1);
+           int left=0;
+           int right=0;
+           int count=0;
+           while(left<m&&right<n)
+           {
+               if(numscopy[left]>=nums2[right])
+               {
+                   nums1[count++]=nums2[right++];
+               }
+               else
+               {
+                   nums1[count++]=numscopy[left++];
+               }
+           }
+           while(left<m)
+           {
+               nums1[count++]=numscopy[left++];
+           }
+           while(right<n)
+           {
+               nums1[count++]=nums2[right++];
+           }
+      }
+  };
+  ```
+
+- 
