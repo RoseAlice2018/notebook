@@ -16,5 +16,8 @@
     	-->
     ```
 
-- 
+- 给Tomcat添加第三方jar包
+
+  - 打开Project Structure 的libraries
+  - 按‘+’添加类库
 
