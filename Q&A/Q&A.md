@@ -18,4 +18,5 @@
 
 2. C++ Set集合的使用
 3. C++ string类型的substr的使用方法。
-4. 
+4. C++ vector类型反转
+   1. reverse(A.rbegin(),A.rend());
