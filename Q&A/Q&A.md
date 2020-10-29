@@ -20,3 +20,6 @@
 3. C++ string类型的substr的使用方法。
 4. C++ vector类型反转
    1. reverse(A.rbegin(),A.rend());
+5. MySql登录
+   1. mysql -uroot -p
+   2. 输入密码
