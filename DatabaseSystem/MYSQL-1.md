@@ -67,4 +67,83 @@ USE DATABASE;
   - 删除列
     - alter table 表名 drop 列名 ；
 
-  
+
+
+
+### DML
+
+#### 添加数据
+
+- 语法：
+  - insert into 表名 （列名1，列名2，......,列名n) values(值1,值2,)
+    - 列名可以省略,默认给所有字段添加
+    - 除数字类型外,需添加引号
+
+#### 删除数据
+
+- 语法
+  - delete from 表名 [ where 条件]
+    - 如果不加条件,会删除所有记录
+  - TRUNCATE TABLE 表名 ;
+    - 删除表,然后建立一个同样的空表
+
+#### 修改数据
+
+- 语法
+  - update 表名 set  列名1 = 值1 ,列名2 = 值2,.....[where 条件]
+
+
+
+### DQL
+
+#### 查询表中记录
+
+- select * from 表名
+
+#### 排序查询
+
+- 语法
+
+  - order by 排序字段1 排序方式1 排序字段2 方式字段2
+
+#### 分组查询
+
+- 语法
+  - group by 分组字段；
+  - 注意：
+    - 分组之后的查询字段：分组字段/聚合函数
+  - 限定条件
+    - WHERE和Having区别
+      - where 在分组之前进行限定 如果不满足条件则不参与分组
+      - having 在分组之后进行限定 如果不满足结果则不会被查询
+      - where 后不可以跟聚合函数 ， having可以进行聚合函数的判断
+
+#### 分页查询
+
+
+
+-  语法
+  - limit 开始的索引 每页查询的条数
+
+
+
+#### 基础查询
+
+- 语法
+  - select 字段列表
+  - from 表名列表
+  - where 条件列表
+  - group by 分组字段
+  - having 分组之后的条件限定
+  - order by 排序
+  - limit 分页限定
+- 查询多个字段
+  - select address ，ID from student；
+- 去除重复
+  - select distinct address from student；
+- 计算列
+  - select NAME，english，math+English FROM student；
+  - select NAME，english，math+ifnull（English，0） FROM student；
+- 别名
+  - select NAME，english，math+ifnull（English，0）AS sum FROM student；
+
