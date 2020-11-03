@@ -147,3 +147,32 @@ USE DATABASE;
 - 别名
   - select NAME，english，math+ifnull（English，0）AS sum FROM student；
 
+#### 条件查询
+
+- 运算符
+  - < , > , < = , > = , = , < >
+  - BETWEEN .... AND
+  - IN(set)
+  - LIKE
+  - IS NULL
+  - and
+  - or
+  - not
+
+#### 约束
+
+- 主键约束：primary key
+  - 含义：非空且唯一
+  - 一张表只能有一个字段为主键
+  - 主键就是表中记录的唯一标识
+- 非空约束： not null
+  - 1. 创建表时加非空约束
+    2. alter 改表
+- 唯一约束：  unique
+  - 值不可重复
+- 外键约束： foreign key
+
+
+
+
+
