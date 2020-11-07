@@ -165,12 +165,19 @@ USE DATABASE;
   - 含义：非空且唯一
   - 一张表只能有一个字段为主键
   - 主键就是表中记录的唯一标识
+  - auto_increment  给id添加主键约束
 - 非空约束： not null
   - 1. 创建表时加非空约束
     2. alter 改表
 - 唯一约束：  unique
   - 值不可重复
-- 外键约束： foreign key
+- 外键约束： foreign key 
+  - constraint 外键名称 foreign key 外键列名称 references 主表名称（主表主键） 
+  - 删除外键
+    - alter TABLE 表的名称 drop foreign key 外键名称
+  - 创建表后添加外键
+    - alter TABLE 表的名称  add constraint 外键名称 foreign key 外键列名称 references 主表名称（主表主键)
+  - 
 
 
 
