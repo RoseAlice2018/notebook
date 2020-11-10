@@ -177,7 +177,48 @@ USE DATABASE;
     - alter TABLE 表的名称 drop foreign key 外键名称
   - 创建表后添加外键
     - alter TABLE 表的名称  add constraint 外键名称 foreign key 外键列名称 references 主表名称（主表主键)
+-  级联：
+  - 设置级联更新
+    - constraint 外键名称 foreign key 外键列名称 references 主表名称（主表主键） ON UPDATE CASCADE
+  - 设置级联删除
+    - constraint 外键名称 foreign key 外键列名称 references 主表名称（主表主键） ON delete CASCADE
+  - 添加级联
+    - constraint 外键名称 foreign key 外键列名称 references 主表名称（主表主键） ON UPDATE CASCADE ON DELETE CASCADE;
+
+#### 数据库范式
+
+#### 数据库备份和还原
+
+1.  命令行：
+   1. 备份
+      1. mysqldump -u用户名 -p密码 > 保存的路径
+   2. 还原
+      1. 登录数据库
+      2. 创建数据库
+      3. 使用数据库
+      4. 执行文件。source 文件路径
+
+
+
+#### 多表查询
+
+- 查询语法：
+  - select 列名列表 from 表名列表 where 条件
+- 内连接查询：
+  - 隐式内连接：
+    - 通过where语句筛去无用的信息。
+  - 显示内连接：
+    - 语法：select 字段列表 from 表名 inner join 表名2 on 条件
+- 外连接查询：
   - 
+
+#### 事务
+
+
+
+
+
+
 
 
 
