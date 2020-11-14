@@ -210,9 +210,42 @@ USE DATABASE;
   - 显示内连接：
     - 语法：select 字段列表 from 表名 inner join 表名2 on 条件
 - 外连接查询：
-  - 
+  - left join
+    - 语法：select 查询字段 from 表1 left outer join 表2 on 条件
+    - 查询的是左表所有数据以及其与表2的交集部分。
+  - right join
+    - 语法：select 查询字段 from 表1 right outer join 表2 on 条件
+    - 查询的是右表所有数据以及其与表1的交集部分。
+
+
+
+#### 子查询
+
+- 子查询的不同情况
+
+  1. 子查询的结果是单行单列的：
+
+     结果可以作为条件，使用运算符去判断。
+
+  2. 子查询的结果是多行单列的：
+
+     in
+
+  3. 子查询的结果是多行多列的：
+
+     作为表来查询
 
 #### 事务
+
+ - 事务的基本介绍
+   	- 开启事务：start transaction
+   	- 回滚事务：rollback
+   	- 提交：commit
+    - MySQL数据库中事务默认自动提交
+      	- 一条DML语句会自动提交一次事务。
+	- 事务的四大特征
+	- 事务的隔离级别
+	- 
 
 
 
