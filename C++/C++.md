@@ -98,6 +98,22 @@
 
 ### lecture 7
 
+```
+class String
+{
+	public:
+		String(const char* cstr = 0);
+		String(const String& str);
+		String& operator=(const String& str);
+		~String();
+		char* get_c_str() const {return m_data;}
+	private:
+		char* m_data;
+};
+```
+
+
+
 - 构造函数和析构函数
 
 - 拷贝构造
