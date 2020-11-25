@@ -146,6 +146,11 @@ class String
 
 ### lecture 8
 
+### lecture 9 pointer-like class 智能指针
+
+- 比普通指针多做了一些事，所以叫智能指针。
+- 
+
 
 
 
