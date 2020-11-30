@@ -149,7 +149,12 @@ class String
 ### lecture 9 pointer-like class 智能指针
 
 - 比普通指针多做了一些事，所以叫智能指针。
-- 
+
+
+
+### lecture 10 关于C++标准库
+
+-   
 
 
 
