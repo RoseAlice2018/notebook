@@ -1,5 +1,9 @@
 ## C++ STL
 
+[toc]
+
+
+
 ### 容器（Containers）
 
 结构分类
@@ -120,9 +124,133 @@
 
 #### Associative Containers
 
+##### rb_tree
+
+- rb_tree(red-black tree)是一个自平衡的二叉搜索树，具体实现原理和插入删除等操作这里不再细说。总之，有利于插入和搜索操作，并且会保持高度平很，不会让任意一个结点过深。
+
+- rb_tree 提供“遍历”操作，以及迭代器iterators，按照正常规则（++ite）遍历，就可以得到有序的结果。（实际上进行了中序遍历）
+
+- 理论上，我们不应该也不能通过iterator来修改其指向的值，因为rbtree有着严谨的排列规则，一旦元素值发生变动，整个树会进行重新排列。（但是从编程层面，这件事并没有进行阻绝。）如此设计的原因，是因为rbtree设计目的是用作set和map的底层，而map元素允许data被修改，只有元素的key才是不可改变的。
+
+- rb_tree 提供两种插入操作：insert_unique() 和insert_equal().前者表示结点的key一定在整个tree中独一无二，否则安插失败；后者表示结点是可以重复的。
+
+- rb_tree 的实现
+
+  ```
+  template <class Key
+  		class Value,
+  		class KeyOfValue,
+  		class compare,
+  		class Alloc = alloc >
+  class rb_tree{
+  	protected:
+  		typedef _rb_tree_node<Value> rb_tree_node;
+  		...
+  	public:
+  		typedef rb_tree_node* link_type;
+  		...
+  	protected:
+  	    //RB-tree 表现性质
+  	    size_type node_count;
+  	    link_type header;
+  	    Compare key_compare;
+  	    ...
+  };
+  ```
+
+  
+
 ##### Set/Multiset
 
+- Set本身更像是一个适配器，因为其所有功能都由rbt_ree来实现
+
+- Set因为没有数据域，所以将其数据域标记位key，来组成value
+
+- compare 是比较函数，可以通过重载‘<'来实现对于自定义类的大小比较
+
+  ```
+  template <class Key,
+  		  class Compare = less<Key>,
+  		  class Alloc = alloc >
+  class set{
+   public:
+   	//typedefs:
+   	typedef Key key_type;
+   	typedef Key value_type;
+   	typedef Compare key_compare;
+   	typedef Compare value_compare;
+   private:
+   	typedef rb_tree<key_type,value_type,identity<value_type>,key_compare,Alloc>
+   	rep_type;
+   public:
+     typedef typename rep_type::const_iterator iterator;
+     ...
+  }
+  
+  template <class Arg,class Result>
+  struct unary_function{
+  	typedef Arg argument_type;
+  	typedef Result result_type;
+  }
+  template <class T>
+  struct identity:public unary_function<T,T>
+  {
+  	const T& operator()(const T& x) const { return x;}
+  };
+  ```
+
+- 样例
+
+  ```
+  set<int> iset;
+  
+  set<int,
+  	less<int>,
+  	alloc
+  	>iset;
+  
+  template<int,
+  		 int,
+  		 identity<int>,
+  		 less<int>,
+  		 alloc>
+  class rb_tree;
+  
+  ```
+
+  
+
 ##### Map/Multimap
+
+- map 以rb_tree 为底层结构，因此元素会自动排序（以key为排序依据）。
+
+- 无法修改key值（因为内部将key值设置为const），但可以修改对应的data值。
+
+- map的key值是独一无二的，因此其insert（）使用的是rb_tree的insert_unique().
+
+- multimap的key值可以重复，因此其insert（）用的是rb_tree的insert_equal().
+
+  ```
+  template <class Key,
+  		 class T,
+  		 class Compare =  less<Key>,
+  		 class Alloc = alloc >
+  class map{
+  	public:
+  		typedef Key key_type;
+  		typedef T data_type;
+  		typedef T mapped_type;
+  		typedef pair<const Key,T> value_type;
+  		typedef Compare key_compare;
+  	private: 
+  		typedef rb_tree<key_type,value_type,select1st<value_type>,key_compare,Alloc> rep_type;
+  	public:
+  		typedef typename rep_type::iterator iterator;
+  		...
+  }
+  ```
+
+  
 
 #### Unordered Containers
 
