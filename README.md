@@ -5,4 +5,17 @@
 ### compiler
 ### DatabasSystem
 ### algorithm
+
+### Linux
+
+### UML
+
+### OS
+
+### C++
+
+### JAVA
+
+### design model
+
 ### Q&A
